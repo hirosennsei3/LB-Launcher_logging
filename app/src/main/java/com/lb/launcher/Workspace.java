@@ -1076,6 +1076,7 @@ public class Workspace extends SmoothPagedView
      */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        Log.v(getClass().toString()+"::onTouch:",event.toString()); // added by H.Yasui 2016/11/
         return (workspaceInModalState() || !isFinishedSwitchingState())
                 || (!workspaceInModalState() && indexOfChild(v) != mCurrentPage);
     }
@@ -1737,6 +1738,8 @@ public class Workspace extends SmoothPagedView
         OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                Log.v(getClass().toString()+":anon:onClick:",arg0.toString()); // added by H.Yasui 2016/11/
+
                 enterOverviewMode();
             }
         };

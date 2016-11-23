@@ -679,6 +679,7 @@ public class CellLayout extends ViewGroup {
         // First we clear the tag to ensure that on every touch down we start with a fresh slate,
         // even in the case where we return early. Not clearing here was causing bugs whereby on
         // long-press we'd end up picking up an item from a previous drag operation.
+        Log.v(getClass().toString()+"::onInterceptTouch:",ev.toString()); // added by H.Yasui 2016/11/
         if (mInterceptTouchListener != null && mInterceptTouchListener.onTouch(this, ev)) {
             return true;
         }
@@ -2691,7 +2692,6 @@ public class CellLayout extends ViewGroup {
      * @param pixelY The Y location at which you want to search for a vacant area.
      * @param spanX Horizontal span of the object.
      * @param spanY Vertical span of the object.
-     * @param ignoreView Considers space occupied by this view as unoccupied
      * @param result Previously returned value to possibly recycle.
      * @return The X, Y cell of a vacant area that can contain this object,
      *         nearest the requested location.
@@ -2741,9 +2741,10 @@ public class CellLayout extends ViewGroup {
      * Like above, but if intersectX and intersectY are not -1, then this method will try to
      * return coordinates for rectangles that contain the cell [intersectX, intersectY]
      *
+     * @param cellXY The array that will contain the position of a vacant cell if such a cell
+     *               can be found.
      * @param spanX The horizontal span of the cell we want to find.
      * @param spanY The vertical span of the cell we want to find.
-     * @param ignoreView The home screen item we should treat as not occupying any space
      * @param intersectX The X coordinate of the cell that we should try to overlap
      * @param intersectX The Y coordinate of the cell that we should try to overlap
      *

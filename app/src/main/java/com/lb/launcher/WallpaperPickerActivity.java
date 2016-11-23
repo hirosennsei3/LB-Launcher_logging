@@ -127,6 +127,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
     public static class PickImageInfo extends WallpaperTileInfo {
         @Override
         public void onClick(WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
             a.startActivityForResultSafely(intent, IMAGE_PICK);
@@ -142,6 +144,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
         }
         @Override
         public void onClick(final WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             final Runnable onLoad;
             if (!mFirstClick) {
                 onLoad = null;
@@ -203,6 +207,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
         }
         @Override
         public void onClick(WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             BitmapRegionTileSource.UriBitmapSource bitmapSource =
                     new BitmapRegionTileSource.UriBitmapSource(a, Uri.fromFile(mFile), 1024);
             a.setCropViewTileSource(bitmapSource, false, true, null);
@@ -232,6 +238,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
         }
         @Override
         public void onClick(WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             BitmapRegionTileSource.ResourceBitmapSource bitmapSource =
                     new BitmapRegionTileSource.ResourceBitmapSource(
                             mResources, mResId, BitmapRegionTileSource.MAX_PREVIEW_SIZE);
@@ -270,6 +278,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
         }
         @Override
         public void onClick(WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             CropView c = a.getCropView();
 
             Drawable defaultWallpaper = WallpaperManager.getInstance(a).getBuiltInDrawable(
@@ -421,6 +431,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
 
         mThumbnailOnClickListener = new OnClickListener() {
             public void onClick(View v) {
+                Log.v(getClass().toString()+":anon:onClick:",v.toString()); // added by H.Yasui 2016/11/
+
                 if (mActionMode != null) {
                     // When CAB is up, clicking toggles the item instead
                     if (v.isLongClickable()) {
@@ -439,6 +451,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
         mLongClickListener = new View.OnLongClickListener() {
             // Called when the user long-clicks on someView
             public boolean onLongClick(View view) {
+                Log.v(getClass().toString()+":anon:onLongClick:",view.toString()); // added by H.Yasui 2016/11/
+
                 CheckableFrameLayout c = (CheckableFrameLayout) view;
                 c.toggle();
 
@@ -547,6 +561,8 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.v(getClass().toString()+":anon:onClick:",v.toString()); // added by H.Yasui 2016/11/
+
                         if (mSelectedTile != null) {
                             WallpaperTileInfo info = (WallpaperTileInfo) mSelectedTile.getTag();
                             info.onSave(WallpaperPickerActivity.this);

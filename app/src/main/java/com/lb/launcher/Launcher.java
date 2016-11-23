@@ -1377,6 +1377,8 @@ public class Launcher extends Activity
         widgetButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                Log.v(getClass().toString()+":anon:onClick:",arg0.toString()); // added by H.Yasui 2016/11/
+
                 if (!mWorkspace.isSwitchingState()) {
                     onClickAddWidgetButton(arg0);
                 }
@@ -1388,6 +1390,8 @@ public class Launcher extends Activity
         wallpaperButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                Log.v(getClass().toString()+":anon:onClick:",arg0.toString()); // added by H.Yasui 2016/11/
+
                 if (!mWorkspace.isSwitchingState()) {
                     onClickWallpaperPicker(arg0);
                 }
@@ -1400,6 +1404,7 @@ public class Launcher extends Activity
             settingsButton.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
+                    Log.v(getClass().toString()+":anon:onClick:",arg0.toString()); // added by H.Yasui 2016/11/
                     if (!mWorkspace.isSwitchingState()) {
                         onClickSettingsButton(arg0);
                     }
@@ -1490,6 +1495,7 @@ public class Launcher extends Activity
         BubbleTextView favorite = (BubbleTextView) mInflater.inflate(layoutResId, parent, false);
         favorite.applyFromShortcutInfo(info, mIconCache, true);
         favorite.setOnClickListener(this);
+    //    favorite.setOnTouchListener(this); // added by H.Yasui 2016/11/4
         favorite.setOnFocusChangeListener(mFocusHandler);
         return favorite;
     }
@@ -2520,6 +2526,7 @@ public class Launcher extends Activity
     public void onClick(View v) {
         // Make sure that rogue clicks don't get through while allapps is launching, or after the
         // view has detached (it's possible for this to happen if the view is removed mid touch).
+        Log.v(getClass().toString()+"::onClick:",v.toString()); // added by H.Yasui 2016/11/
         if (v.getWindowToken() == null) {
             return;
         }
@@ -2527,6 +2534,7 @@ public class Launcher extends Activity
         if (!mWorkspace.isFinishedSwitchingState()) {
             return;
         }
+        Log.v("onClick",v.toString()); // added by H.Yasui 2016/11/4
 
         if (v instanceof Workspace) {
             if (mWorkspace.isInOverviewMode()) {
@@ -2567,6 +2575,7 @@ public class Launcher extends Activity
     }
 
     public boolean onTouch(View v, MotionEvent event) {
+        Log.v(getClass().toString()+"::onTouch:",v.toString()+"::"+event.toString()); // added by H.Yasui 2016/11/4
         return false;
     }
 
@@ -2634,6 +2643,7 @@ public class Launcher extends Activity
             .setNeutralButton(R.string.abandoned_clean_this,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        Log.v(getClass().toString()+":anon:onClick:",dialog.toString()); // added by H.Yasui 2016/11/
                         final UserHandleCompat user = UserHandleCompat.myUserHandle();
                         mWorkspace.removeAbandonedPromise(packageName, user);
                     }
@@ -2837,6 +2847,7 @@ public class Launcher extends Activity
             mHapticFeedbackTouchListener = new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
+                    Log.v(getClass().toString()+"::onTouch:",v.toString()+"::"+event.toString()); // added by H.Yasui 2016/11/4
                     if ((event.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_DOWN) {
                         v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                     }
@@ -3142,6 +3153,8 @@ public class Launcher extends Activity
     }
 
     public boolean onLongClick(View v) {
+        Log.v(getClass().toString()+"::onLongClick:",v.toString()); // added by H.Yasui 2016/11/
+
         if (!isDraggingEnabled()) return false;
         if (isWorkspaceLocked()) return false;
         if (mState != State.WORKSPACE) return false;
@@ -4441,6 +4454,7 @@ public class Launcher extends Activity
             item.hostView = view;
             item.hostView.updateAppWidget(null);
             item.hostView.setOnClickListener(this);
+ //           item.hostView.setOnTouchListener(this); // added by H.Yasui 2016/11/4
         }
 
         item.hostView.setTag(item);

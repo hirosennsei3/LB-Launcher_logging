@@ -18,6 +18,7 @@ package com.lb.launcher;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -97,6 +98,7 @@ public abstract class PagedViewWithDraggableItems extends PagedView
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        Log.v(getClass().toString()+"::onTouch:",event.toString()); // added by H.Yasui 2016/11/
         mLastTouchedItem = v;
         mIsDragEnabled = true;
         return false;
@@ -104,6 +106,8 @@ public abstract class PagedViewWithDraggableItems extends PagedView
 
     @Override
     public boolean onLongClick(View v) {
+        Log.v(getClass().toString()+"::onLongClick:",v.toString()); // added by H.Yasui 2016/11/
+
         // Return early if this is not initiated from a touch
         if (!v.isInTouchMode()) return false;
         // Return early if we are still animating the pages

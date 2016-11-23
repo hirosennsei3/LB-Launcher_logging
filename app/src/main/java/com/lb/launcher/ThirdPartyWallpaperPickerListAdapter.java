@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,8 @@ public class ThirdPartyWallpaperPickerListAdapter extends BaseAdapter implements
         }
         @Override
         public void onClick(WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             final ComponentName itemComponentName = new ComponentName(
                     mResolveInfo.activityInfo.packageName, mResolveInfo.activityInfo.name);
             Intent launchIntent = new Intent(Intent.ACTION_SET_WALLPAPER);

@@ -28,6 +28,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,6 +62,8 @@ class LauncherClings implements OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Log.v(getClass().toString()+"::onClick:",v.toString()); // added by H.Yasui 2016/11/
+
         int id = v.getId();
         if (id == R.id.cling_dismiss_migration_use_default) {
             // Disable the migration cling
@@ -125,6 +128,8 @@ class LauncherClings implements OnClickListener {
 
             @Override
             public boolean onLongClick(View v) {
+                Log.v(getClass().toString()+":anon:onLongClick:",v.toString()); // added by H.Yasui 2016/11/
+
                 mLauncher.getWorkspace().enterOverviewMode();
                 dismissLongPressCling();
                 return true;

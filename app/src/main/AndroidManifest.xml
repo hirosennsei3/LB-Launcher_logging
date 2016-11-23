@@ -20,7 +20,7 @@
     package="com.lb.launcher" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="18"
         android:targetSdkVersion="22" />
 
     <permission

@@ -230,6 +230,7 @@ public class Folder extends LinearLayout implements DragSource, View.OnClickList
     };
 
     public void onClick(View v) {
+        Log.v(getClass().toString()+"::onClick:",v.toString()); // added by H.Yasui 2016/11/
         Object tag = v.getTag();
         if (tag instanceof ShortcutInfo) {
             mLauncher.onClick(v);
@@ -237,6 +238,8 @@ public class Folder extends LinearLayout implements DragSource, View.OnClickList
     }
 
     public boolean onLongClick(View v) {
+        Log.v(getClass().toString()+"::onLongClick:",v.toString()); // added by H.Yasui 2016/11/
+
         // Return if global dragging is not enabled
         if (!mLauncher.isDraggingEnabled()) return true;
 

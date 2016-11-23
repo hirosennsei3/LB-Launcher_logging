@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -155,6 +156,8 @@ public class PendingAppWidgetHostView extends LauncherAppWidgetHostView implemen
 
     @Override
     public void onClick(View v) {
+        Log.v(getClass().toString()+"::onClick:",v.toString()); // added by H.Yasui 2016/11/
+
         // AppWidgetHostView blocks all click events on the root view. Instead handle click events
         // on the content and pass it along.
         if (mClickListener != null) {

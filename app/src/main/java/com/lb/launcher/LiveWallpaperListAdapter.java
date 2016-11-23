@@ -44,7 +44,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LiveWallpaperListAdapter extends BaseAdapter implements ListAdapter {
-    private static final String LOG_TAG = "LiveWallpaperListAdapter";
+    private static final String LOG_TAG = "LiveWallpap.ListAdapter";
 
     private final LayoutInflater mInflater;
     private final PackageManager mPackageManager;
@@ -118,6 +118,8 @@ public class LiveWallpaperListAdapter extends BaseAdapter implements ListAdapter
         }
         @Override
         public void onClick(WallpaperPickerActivity a) {
+            Log.v(getClass().toString()+"::onClick:",a.toString()); // added by H.Yasui 2016/11/
+
             Intent preview = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
             preview.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
                     mInfo.getComponent());

@@ -22,6 +22,7 @@ import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -55,7 +56,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class WallpaperCropActivity extends Activity {
-    private static final String LOGTAG = "LB-Launcher.CropActivity";
+    private static final String LOGTAG = "LBLauncher.CropActivity";
 
     protected static final String WALLPAPER_WIDTH_KEY = "wallpaper.width";
     protected static final String WALLPAPER_HEIGHT_KEY = "wallpaper.height";
@@ -81,7 +82,7 @@ public class WallpaperCropActivity extends Activity {
         super.onCreate(savedInstanceState);
         init();
         if (!enableRotation()) {
-            setRequestedOrientation(Configuration.ORIENTATION_PORTRAIT);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
 
@@ -107,6 +108,8 @@ public class WallpaperCropActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.v(getClass().toString()+":anon:onClick:",v.toString()); // added by H.Yasui 2016/11/
+
                         boolean finishActivityWhenDone = true;
                         cropImageAndSetWallpaper(imageUri, null, finishActivityWhenDone);
                     }
